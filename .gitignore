@@ -6,3 +6,7 @@
 *.OBJ
 *.SYM
 *.MAP
+
+# Результаты прогона test.bat - генерируются заново при каждом запуске теста
+actual_output*.txt
+lab3_backup_before_test.dba

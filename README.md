@@ -17,15 +17,32 @@ ES2026_Labs_Variant5/
 │                          и полная среда VIP (можно открыть vip.exe -
 │                          графическую IDE, но это необязательно)
 ├── labs/
-│   ├── lab1/  LAB1.PRO           + run.bat
-│   ├── lab2/  LAB2.PRO           + run.bat
-│   ├── lab3/  LAB3.PRO  lab3.dba + run.bat
-│   ├── lab4/  LAB4.PRO           + run.bat
-│   ├── lab5_6/LAB5_6.PRO volkan.dba + run.bat   (лаб.5 и лаб.6 вместе)
-│   ├── lab7/  LAB7.PRO           + run.bat
-│   └── lab8/  LAB8.PRO           + run.bat
-└── README.md  (этот файл)
+│   ├── lab1/  LAB1.PRO           + run.bat + test.bat
+│   ├── lab2/  LAB2.PRO           + run.bat + test.bat
+│   ├── lab3/  LAB3.PRO  lab3.dba + run.bat + test.bat
+│   ├── lab4/  LAB4.PRO           + run.bat + test.bat
+│   ├── lab5_6/LAB5_6.PRO volkan.dba + run.bat + test.bat   (лаб.5 и лаб.6 вместе)
+│   ├── lab7/  LAB7.PRO           + run.bat + test.bat
+│   └── lab8/  LAB8.PRO           + run.bat + test.bat
+├── README.md  (этот файл)
+└── TESTS_AND_CODE_WALKTHROUGH.md  (условие + разбор кода + тесты по каждой лабе)
 ```
+
+## Автоматические тесты (`test.bat` в каждой папке лабы)
+
+В каждой папке `labs/labX/` лежит `test.bat` — он сам компилирует
+программу, запускает её с заранее заготовленным вводом
+(`test_input*.txt`), сравнивает полученный вывод с заведомо верным
+эталоном (`expected_output*.txt`, получен реальным прогоном при
+разработке) и печатает **PASSED** или показывает построчные различия.
+Запускается точно так же, как `run.bat`:
+```
+cd E:\ES2026_Labs_Variant5\labs\lab1
+.\test.bat
+```
+Для лаб.3 тест дополнительно делает резервную копию `lab3.dba` перед
+прогоном (тест добавляет и сохраняет нового покупателя) и
+восстанавливает файл после — база данных в репозитории не портится.
 
 ## Как запустить любую лабораторную (через командную строку)
 
