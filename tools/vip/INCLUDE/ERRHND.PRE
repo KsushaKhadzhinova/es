@@ -1,0 +1,45 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ Project:
+ FileName: ERRHND.PRE
+ Purpose: Predicate definitions for ERRHND.PRO
+ Written by: PDC
+ Comments: Not used in VPI projects !
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+    29/09/99    บSPB482บ  R980109.01 fileerror
+                บ      บ
+
+******************************************************************************/
+
+/************************************************************************
+   Hooks to DOS TXTMODE error handlers in the PDC Prolog library
+*************************************************************************/
+
+global predicates
+  % Handling critical error's under plain DOS
+  % ErrNo: Return code from error handler
+  % ErrType: Error type (0=Char dev, 1=disk dev)
+  % DiskNo: Only when ErrType is 1
+  % Action: 0=Ignore, 1=Retry, 2=Terminate, 3=Fail (Return error to call)
+  %
+  % Note: Under the handling off critical error's is it only allowed to call
+  % a few DOS calls. In Prolog this concerns only Screen input/output.
+  %
+  % Consult a DOS reference manual to get a description of critical error
+  % handling.
+  %
+  criticalerror(integer,integer,integer,integer) % (ErrNo,ErrType,DiskNo,Action)
+	- (i,i,i,o) language C as "_CriticalError_0"
+
+
+  % Handling error's in the editor
+  fileerror(Integer,String)  % (ErrNo,FileName)
+	/* SPB482 - (i,i) language C as "_MNU_FileError" */
+	- (i,i) language C as "_ERR_FileError"

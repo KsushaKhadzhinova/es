@@ -1,0 +1,24 @@
+/*****************************************************************************
+
+		Copyright (c) My Company
+
+ Project:  AESD
+ FileName: AESD.PRO
+ Purpose: No description
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+include "aesd.inc"
+
+predicates
+
+ nondeterm min(integer,integer,integer)
+
+clauses
+min(A,B,Y1):- A<=B,!.
+min(_,B,Y2).
+goal
+write("A= "),readint(Y1),
+write("B= "),readint(Y2),
+min(Y1,Y2,Min),write("Minimum=",Min),nl .

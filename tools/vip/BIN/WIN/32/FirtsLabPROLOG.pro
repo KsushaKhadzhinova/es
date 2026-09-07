@@ -1,0 +1,20 @@
+ predicates
+ nondeterm         equation
+ nondeterm        znach(integer)
+            
+                              goal
+                                          equation.
+             clauses
+                   
+                 equation:-
+                                    znach(A),
+                                    znach(B),
+                                    znach(C),                                 
+                                    C-(A*(1-B))>= 0,
+                                    A+B-A*B- C>= 0,
+                                    1-C-A>= 0,
+                                    A+B+C>=1,
+write("A=",A," B=",B," C=",C),
+readchar(_).                
+znach(B):-B=0; B=1.
+

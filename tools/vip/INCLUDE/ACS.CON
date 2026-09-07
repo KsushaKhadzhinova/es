@@ -1,0 +1,82 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ Project:
+ FileName: ACS.CON
+ Purpose:  constants definitions
+ Written by: Compiler Group
+ Comments:
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+                บ      บ
+******************************************************************************/
+
+% Not used in VPI projects !
+% Used only for giving textmode portability to UNIX
+
+ifdef os_unix
+
+constants
+  /* VT100 alternate charset glyphs */
+  acs_ulcorner = 'l'	% Upper left corner (of window frame)
+  acs_llcorner = 'm'	% Lower left corner
+  acs_urcorner = 'k'	% Upper right corner
+  acs_lrcorner = 'j'	% Lower right corner
+  acs_rtee = 'u'	% Right tee
+  acs_ltee = 't'	% Left tee
+  acs_btee = 'v'	% Bottom tee
+  acs_ttee = 'w'	% Top Tee
+  acs_hline = 'q'	% Horizontal line
+  acs_vline = 'x'	% Vertical line
+  acs_plus = 'n'	% Frame cross-hairs
+  acs_s1 = 'o'		% Scan-line 1
+  acs_s9 = 's'		% Scan-line 9
+  acs_diamond = '`'	% Diamond symbol
+  acs_ckboard = 'a'	% Checker board
+  acs_degree = 'f'	% Degree symbol
+  acs_plminus = 'g'	% Plus/minus symbol
+  acs_bullet = '~'	% (Typographical) bullet
+  /* Teletype 5410v1 symbols */
+  acs_larrow = ','	% Arrow pointing left
+  acs_rarrow = '+'	% Arrow pointing right
+  acs_darrow = '.'	% Arrow pointing down
+  acs_uarrow = '-'	% Arrow pointing up
+  acs_board = 'h'	% Lots of small squares
+  acs_lantern = 'i'	% Lantern symbol
+  acs_block = '0'	% Solid block
+
+elsedef
+
+constants
+  acs_plus = 'ล'
+  acs_rtee = 'ด'
+  acs_ltee = 'ร'
+  acs_btee = 'ม'
+  acs_ttee = 'ย'
+  acs_ulcorner = 'ฺ'
+  acs_urcorner = 'ฟ'
+  acs_lrcorner = 'ู'
+  acs_llcorner = 'ภ'
+  acs_hline = 'ฤ'
+  acs_vline = 'ณ'
+  acs_s9 = '_'		% Scan-line 9
+  acs_diamond = ''	% Diamond symbol
+  acs_ckboard = 'ฮ'	% Checker board
+  acs_degree = '๘'	% Degree symbol
+  acs_plminus = '๑'	% Plus/minus symbol
+  acs_bullet = 'þ'	% (Typographical) bullet
+  /* Teletype 5410v1 symbols */
+  acs_larrow = ''	% Arrow pointing left
+  acs_rarrow = 26	% Arrow pointing right (ctrl-Z, eof in DOS .. ARRRGH)
+  acs_darrow = ''	% Arrow pointing down
+  acs_uarrow = ''	% Arrow pointing up
+  acs_board = 'ฒ'	% Lots of small squares
+  acs_lantern = ''	% Lantern symbol
+  acs_block = 'Û'	% Solid block
+
+enddef

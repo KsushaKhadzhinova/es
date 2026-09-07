@@ -1,0 +1,3 @@
+include "spiski.inc"
+
+domains

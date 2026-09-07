@@ -1,0 +1,68 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ Project:
+ FileName: PDCRUNT.DOM
+ Purpose:  Domains definition for pdcrunt.pre
+ Written by: Compiler Group
+ Comments:
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+                บ      บ
+******************************************************************************/
+
+ifndef pdcrunt_dom_included
+
+  constants
+    pdcrunt_dom_included = 1
+
+  global domains
+
+    OS_HANDLE	= unsigned	/* Handle of some OS object */
+
+  ifdef platform_32bit
+
+      OS_PROCESS_ID	= ulong	/* Identifier of process     */
+      OS_THREAD_ID	= ulong	/* Identifier of thread	     */
+      OS_EXIT_CODE	= ulong	/* Process / thread exit code*/
+
+  enddef	/* platform_32bit */
+
+
+
+  OS_TIME = struct os_time ( UNSIGNED	Year,
+	    	     	     BYTE	Month,
+	    	     	     BYTE	Day,
+	    	     	     BYTE	Hour,
+	    	     	     BYTE	Minute,
+	    	     	     BYTE	Second
+		           )
+
+  OS_FILESTAMP = struct os_filestamp ( os_time CreateFileDate
+				       ifdef platform_32bit
+				        ,os_time  WriteFileDate,
+				         os_time  AccessFileDate
+				       enddef
+			             )
+
+
+  TUserErrRepFns = determ ( UNSIGNED,       				/* Error Code */
+			    UNSIGNED,					/* Error Include Number */
+			    UNSIGNED,					/* Error Position */
+			    STRING		 			/* Error Message */
+			  )  - ( i, i, i, i )  language c 
+
+  ifdef os_unix
+    STACKMARK = struct stackmark( UNSIGNED seg,
+			          UNSIGNED off
+	 	 		)
+  elsedef
+    STACKMARK = ulong
+  enddef  
+
+enddef

@@ -1,0 +1,112 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ Project:
+ FileName: IODECL.CON
+ Purpose: Constant definitions for the openfile/5 standard predicate
+ Written by: Compiler Group
+ Comments:
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+                บ      บ
+******************************************************************************/
+
+
+constants
+  iodecl_con_included = 1
+
+ifdef os_unix
+
+constants
+  /* These are file attributes, corresponding to the UNIX filemodes */
+  /* For use by the directory-search predicates, the access permissions */
+  /* below (0o777) are suitable, as the search is inclusive ... for */
+  /* file-creation, the fa_if* values, or'ed with appopriate access */
+  /* permissions, should be used. */
+
+  fa_normal = 0o100777
+  fa_subdir = 0o40777
+
+  fa_ifmt = 0170000	% And filemode with this to get file type
+  fa_ifreg = 0100000	% Regular file (see mknod(S))
+  fa_ifblk = 0060000	% block special
+  fa_ifnam = 0050000	% special named file
+  fa_ifdir = 0040000	% directory
+  fa_ifchr = 0020000	% character special
+  fa_ififo = 0010000	% fifo
+
+  fa_stdperm = 0o644
+
+  /* File access check, for existfile */
+  f_ok = 0
+  x_ok = 1
+  w_ok = 2
+  r_ok = 4
+
+  /* File usage Modes */
+  fm_access_wo = 0x0001  /* write only           */
+  fm_access_rw = 0x0002  /* read/write           */
+  fm_access_ro = 0x0020  /* read only            */
+  /* Exclusively for UNIX, OS2 and DOS >= 4.0 */
+  fm_writethru = 0x0010  /* write through        */
+  /* Exclusion of other processes - advisory locking is used */
+  fm_sh_denyrw = 0x00100000  /* deny read/write mode */
+  fm_sh_denywr = 0x00200000  /* deny write mode      */
+  fm_sh_denyrd = 0x00300000  /* deny read mode       */
+  fm_sh_denyno = 0x00400000  /* deny none mode       */
+
+  /* Creation Flags */
+  /* Actions if file exists (low nibble) :	*/
+  cr_ex_fail	= 0x00
+  cr_ex_open	= 0x01
+  cr_ex_replace	= 0x02
+  /* Actions if file doesn't exist (high nibble):	*/
+  cr_noex_fail	= 0x00
+  cr_noex_create = 0x10
+
+
+elsedef
+
+/* Constants for DOS & OS2 */
+
+  constants
+  /* File Attributes */
+  fa_rdonly = $01    /* Read only file       */
+  fa_hidden = $02    /* Hidden file          */
+  fa_system = $04    /* System file          */
+  fa_subdir = $10    /* Subdirectory         */
+  fa_arch   = $20    /* Archive file         */
+  fa_normal = $40    /* Normal file - No read/write restrictions */
+
+
+  /* File usage Modes */
+  fm_access_wo = $0001  /* write only           */
+  fm_access_rw = $0002  /* read/write           */
+  fm_access_ro = $0004  /* read only            */
+  fm_sh_denyrw = $0010  /* deny read/write mode */
+  fm_sh_denywr = $0020  /* deny write mode      */
+  fm_sh_denyrd = $0030  /* deny read mode       */
+  fm_sh_denyno = $0040  /* deny none mode       */
+
+  /* Exclusively for OS2 and DOS >= 4.0 */
+  fm_returnerr = $2000  /* return error rather than call crit hand. */
+  fm_writethru = $4000  /* write through        */
+
+
+  /* Creation Flags */
+
+  /* Actions if file exists (low nibble) :	*/
+  cr_ex_fail	= $00
+  cr_ex_open	= $01
+  cr_ex_replace	= $02
+
+  /* Actions if file doesn't exist (high nibble):	*/
+  cr_noex_fail	= $00
+  cr_noex_create	= $10
+
+enddef

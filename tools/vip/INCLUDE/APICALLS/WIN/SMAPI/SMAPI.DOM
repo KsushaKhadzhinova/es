@@ -1,0 +1,68 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:
+ FileName: SMAPI.DOM
+ Purpose: A Visual Prolog interface to Simple MAPI calls
+ Written by: Konstantin Ivanov
+ Comments:
+******************************************************************************/
+
+ifndef ws_win
+  #error Unsupported platform
+enddef
+
+ifndef smapi_dom_included
+
+  constants
+
+    smapi_dom_included = 1
+
+  global domains
+  
+ifndef pdcrunt_dom_included
+	
+    OS_HANDLE		= UNSIGNED		/* Handle of some OS object */
+    
+enddef    
+ifndef apicalls_dom_included
+
+     DWORD_LIST 	= DWORD*    
+
+enddef
+
+    LHANDLE		= ULONG
+    MAPIRECIPDESC_ARRAY	= BINARY
+    MAPIRECIPDESC_LIST	= MAPIRECIPDESC*
+    MAPIFILEDESC_ARRAY	= BINARY
+    MAPIFILEDESC_LIST	= MAPIFILEDESC*
+    MAPIMESSAGE		= struct mapimessage(	ULONG Reserved,
+						STRING Subject,
+     						STRING NoteText,
+						STRING MessageType,
+     						STRING DateReceived,
+						STRING ConversationID,
+						ULONG Flags,						%????
+						MAPIRECIPDESC_ARRAY Originator,	% only one originator or NULL
+						ULONG RecipCount,
+						MAPIRECIPDESC_ARRAY Recips,
+						ULONG FileCount,
+						MAPIFILEDESC_ARRAY Files
+      						)
+   MAPIRECIPDESC	= struct mapirecipdesc( ULONG Reserved,
+						ULONG RecipClass,
+						STRING Name,
+						STRING Address,
+						ULONG EIDSize,
+						BINARY EntryID
+						)
+   MAPIFILEDESC		= struct mapifiledesc( ULONG Reserved,
+					       ULONG Flags,
+					       ULONG Position,
+					       STRING PathName,
+					       STRING FileName,
+					       BINARY FileType
+					     )
+
+enddef	/* smapi_dom_included */

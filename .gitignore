@@ -1,0 +1,8 @@
+# Артефакты сборки Visual Prolog - генерируются заново командой run.bat
+*.exe
+*.obj
+*.sym
+*.map
+*.OBJ
+*.SYM
+*.MAP

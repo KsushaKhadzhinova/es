@@ -1,0 +1,31 @@
+/*****************************************************************************
+
+		Copyright (c) My Company
+
+ Project:  DDD
+ FileName: DDD.PRO
+ Purpose: No description
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+include "ddd.inc"
+
+predicates
+	
+  nondeterm func(integer, integer,integer)
+  
+goal
+
+  write("input number:"),
+  readint(N),
+  func(N, 0).
+  
+clauses
+
+  func(0, F):-F=N.
+  func(N, F):-
+  		N1=N-1,
+  		F1=F-N,
+  func(N1,F1).
+

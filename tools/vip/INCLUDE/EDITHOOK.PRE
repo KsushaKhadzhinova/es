@@ -1,0 +1,60 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ Project:
+ FileName: EDITHOOK.PRE
+ Purpose: Predicate definitions for EDITHOOK.PRO
+ Written by: PDC
+ Comments: Not used in VPI projects !
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+                บ      บ
+******************************************************************************/
+
+/*****************************************************************************
+
+   Editor extensions with the old TXTMODE EditHook Predicate
+   =========================================================
+
+In the editor the user has a choice of eight special keys which he can
+define the fuunction of himself. When one of these keys are pressed the
+editor calls the C routine:
+
+void ED_EditHook(
+	INT KeyNo,			/* from 1 to 8 depending of key */
+	CHAR *EditText,			/* Whole editor text */
+	INT Currentpos,			/* Current cursor position in text */
+	INT BeginBlock, INT BlockLen,	/* If <> 0; a marked block */
+	INT BlockMarkingMode,		/* 0 if in markingmode, 1 if not */
+	INT *NewCurPos,			/* If <>0; new position after return */
+	INT *NewBlockStart, INT *NewBlockLen, /* If <>0; new marked block */
+	INT *NewBlockMarkingMode,	/* 0 if in markingmode, 1 if not */
+	INT *DeleteFrom, INT *DeleteLen,/* If <>0; block to delete */
+	INT *PastePos)			/* If <>0; place  to insert paste buf */
+{ /* Default definition */
+  *NewCurPos=0;
+  *NewBlockStart=0;
+  *NewBlockLen=0;
+  *DeleteFrom=0;
+  *DeleteLen=0;
+  *PastePos=0;
+}
+
+You can only use this facility if you are linking your program to an executable
+file. If you define clauses for the ED_ApplicationFunction routine in you
+prolog program, the linker will use this instead of the default definition
+from the library.
+
+***************************************************************************/
+
+global predicates
+  /* Define the predicate as a C routine */
+  ED_AppFunc(INTEGER,STRING,INTEGER,INTEGER,INTEGER,INTEGER,INTEGER,INTEGER,
+  					INTEGER,INTEGER,INTEGER,INTEGER,INTEGER)
+ 	- (i,i,i,i,i,i,o,o,o,o,o,o,o) language c as "_ED_EditHook"
+

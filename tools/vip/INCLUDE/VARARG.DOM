@@ -1,0 +1,45 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ FileName: VARARG.DOM
+ PURPOSE: Domain declaration for variable argument calls
+ Written by: Compiler Group
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+    10/02/99	บSPB458บ R990210.02 Support for the stdcall calling convention
+                บ      บ
+******************************************************************************/
+
+
+global domains
+   ArgValue =
+	% Fixes Size domains
+	byte(BYTE);
+	WORD(word);
+	dword(DWORD);
+
+	% Platform dependent domains
+	char(CHAR);
+	short(SHORT);
+	long(LONG);
+	integer(INTEGER);
+
+	% Other domains
+	Str(STRING);
+	real(REAL)
+
+   ArgValueList = ArgValue*
+   /* SPB458 begin */
+   /*
+   C_Proc	= determ () - language c
+   Pascal_Proc	= determ () - language pascal
+   */
+   C_Proc	= determ DWORD () - language c
+   Pascal_Proc	= determ DWORD () - language pascal
+   Std_Proc	= determ DWORD () - language stdcall
+   /* SPB458 end */

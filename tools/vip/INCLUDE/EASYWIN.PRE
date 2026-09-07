@@ -1,0 +1,16 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ Project:
+ FileName: EASYWIN.PRE
+ Purpose:  Miscellaneous predicates for Easywin strategy
+ Written by: Yuri Iliin
+ Comments:
+
+******************************************************************************/
+
+global predicates
+  easywin_CloseAfterEnd( INTEGER OnOff ) - (i) language C

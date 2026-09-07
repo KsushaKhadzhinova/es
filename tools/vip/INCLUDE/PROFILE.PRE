@@ -1,0 +1,23 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ Project:
+ FileName: Profile.PRE
+ Purpose: Use undocumented Compiler's option -Q
+ Written by: Compiler Group
+ Comments: Supports 32bits Windows only.
+******************************************************************************/
+
+ifdef os_nt
+
+global predicates
+
+  profileEnable() - () language c as "_RUN_ProfileEnable"
+  profileDisable() - () language c as "_RUN_ProfileDisable"
+  profilePrint() - () language c as "_RUN_ProfilePrint"
+  profileReset() - () language c as "_RUN_ProfileReset"
+
+enddef

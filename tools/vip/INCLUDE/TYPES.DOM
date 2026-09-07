@@ -1,0 +1,33 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ Project:
+ FileName: TYPES.DOM
+ Purpose: Common types definitions
+ Written by: PDC Russia
+ Comments:
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+                บ      บ
+******************************************************************************/
+
+  constants
+
+    types_dom_included = 1
+
+  constants
+
+    b_false = 0
+    b_true  = 1
+
+  global domains
+
+    BOOLEAN	= INTEGER
+    SLIST	= STRING*
+    ILIST	= INTEGER*
+    POINTER	= ULONG

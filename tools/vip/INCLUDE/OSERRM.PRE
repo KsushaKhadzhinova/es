@@ -1,0 +1,79 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center	A/S
+
+				Visual Prolog
+
+ Project:
+ FileName: OSERRM.PRE
+ Purpose: Global set error mode predicate
+ Written by: Compiler Group
+ Comments:
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+   03/10/96     บSPB000บ added predicate for OS/2
+   26/05/97     บSPB000บ add use_omf_objformat constant
+                บ      บ
+******************************************************************************/
+% Returns :
+
+% The return value is the previous state of the error-mode flag,
+% if the function is successful.
+
+% Example :
+
+% Turn off the "File not found" error box( WIN WIN95 WINNT)
+
+% set_error_mode(SEM_NOOPENFILEERRORBOX);
+
+% constant definition for Windows please see API Help SetErrorMode function
+ifdef ws_win
+
+ constants
+   sem_failcriticalerrors	=	0x0001
+   sem_nogpfaulterrorbox	=	0x0002
+   sem_noopenfileerrorbox	=	0x8000
+
+   ifdef platform_32bit
+    sem_noalignmentfaultexcept	=	0x0004
+   enddef
+
+  global predicates
+
+  ifdef platform_16bit
+    UNSIGNED set_error_mode( UNSIGNED ) - (i) language PASCAL as "SetErrorMode"
+  enddef
+
+  ifdef platform_32bit
+    ifdef use_omf_objformat
+      UNSIGNED set_error_mode( UNSIGNED ) - (i) language PASCAL as "SetErrorMode"
+    elsedef
+      UNSIGNED set_error_mode( UNSIGNED ) - (i) language PASCAL as "_SetErrorMode@4"
+    enddef
+  enddef
+enddef
+
+% constant definition for OS/2 please see API Help DosError function
+
+%example :
+
+%Turn off hard error pop-up message
+
+% dosError( disable_harderror )
+
+ifdef os_os2
+
+  constants
+    enable_harderror		= 1
+    disable_harderror   	= 0
+    enable_exception		= 0
+    disable_exception		= 2
+    enable_errorpopups		= 1
+    disable_errorpopups		= 2
+
+  global predicates
+
+    dosError( UNSIGNED ) - (i) language C as "DosError"
+enddef

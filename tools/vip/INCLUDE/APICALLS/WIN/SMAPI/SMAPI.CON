@@ -1,0 +1,86 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+ Project:
+ FileName: SMAPI.con
+ Purpose: A Visual Prolog interface to Simple MAPI calls
+ Written by: Konstantin Ivanov
+ Comments:
+******************************************************************************/
+
+ifndef ws_win
+  #error Unsupported platform
+enddef
+
+ifndef smapi_con_included
+
+  constants
+
+    smapi_con_included = 1
+
+			/************************/
+			/* Names of API calls  */
+			/************************/
+  constants
+
+    sMAPI_ORIG				= 0           /* Recipient is message originator          */
+    sMAPI_TO				= 1           /* Recipient is a primary recipient         */
+    sMAPI_CC				= 2           /* Recipient is a copy recipient            */
+    sMAPI_BCC				= 3           /* Recipient is blind copy recipient        */
+
+    sMAPI_OLE 				= 0x00000001
+    sMAPI_OLE_STATIC 			= 0x00000002
+
+    sMAPI_UNREAD 			= 0x00000001
+    sMAPI_RECEIPT_REQUESTED 		= 0x00000002
+    sMAPI_SENT				= 0x00000004
+
+    sMAPI_LOGON_UI			= 0x00000001  /* Display logon UI             */
+    sMAPI_NEW_SESSION			= 0x00000002  /* Don't use shared session     */
+    sMAPI_PASSWORD_UI			= 0x00020000  /* prompt for password only     */
+    sMAPI_FORCE_DOWNLOAD		= 0x00001000  /* Get new mail before return   */
+    sMAPI_EXTENDED			= 0x00000020  /* Extended MAPI Logon          */
+      
+    sMAPI_DIALOG			= 0x00000008  /* Display a send note UI       */
+  
+    sMAPI_UNREAD_ONLY			= 0x00000020  /* Only unread messages         */
+    sMAPI_GUARANTEE_FIFO		= 0x00000100  /* use date order               */
+    sMAPI_LONG_MSGID			= 0x00004000  /* allow 512 char returned ID   */
+      
+    sMAPI_PEEK 				= 0x00000080  /* Do not mark as read.         */
+    sMAPI_SUPPRESS_ATTACH		= 0x00000800  /* header + body, no files      */
+    sMAPI_ENVELOPE_ONLY			= 0x00000040  /* Only header information      */
+    sMAPI_BODY_AS_FILE			= 0x00000200
+
+    sMAPI_AB_NOMODIFY 			= 0x00000400  /* Don't allow mods of AB entries */
+
+    sMAPI_SUCCESS_SUCCESS		= 0
+    sMAPI_E_USER_ABORT			= 1
+    sMAPI_E_FAILURE			= 2
+    sMAPI_E_LOGON_FAILURE		= 3
+    sMAPI_E_LOGIN_FAILURE		= sMAPI_E_LOGON_FAILURE
+    sMAPI_E_DISK_FULL			= 4
+    sMAPI_E_INSUFFICIENT_MEMORY		= 5
+    sMAPI_E_ACCESS_DENIED		= 6
+    sMAPI_E_TOO_MANY_SESSIONS		= 8
+    sMAPI_E_TOO_MANY_FILES		= 9
+    sMAPI_E_TOO_MANY_RECIPIENTS		= 10
+    sMAPI_E_ATTACHMENT_NOT_FOUND	= 11
+    sMAPI_E_ATTACHMENT_OPEN_FAILURE	= 12
+    sMAPI_E_ATTACHMENT_WRITE_FAILURE	= 13
+    sMAPI_E_UNKNOWN_RECIPIENT		= 14
+    sMAPI_E_BAD_RECIPTYPE		= 15
+    sMAPI_E_NO_MESSAGES			= 16
+    sMAPI_E_INVALID_MESSAGE		= 17
+    sMAPI_E_TEXT_TOO_LARGE		= 18
+    sMAPI_E_INVALID_SESSION		= 19
+    sMAPI_E_TYPE_NOT_SUPPORTED		= 20
+    sMAPI_E_AMBIGUOUS_RECIPIENT		= 21
+    sMAPI_E_MESSAGE_IN_USE		= 22
+    sMAPI_E_NETWORK_FAILURE		= 23
+    sMAPI_E_INVALID_EDITFIELDS		= 24
+    sMAPI_E_INVALID_RECIPS		= 25
+    sMAPI_E_NOT_SUPPORTED		= 26
+
+enddef

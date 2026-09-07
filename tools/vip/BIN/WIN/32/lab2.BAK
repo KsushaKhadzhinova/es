@@ -1,0 +1,24 @@
+/*****************************************************************************
+
+		Copyright (c) My Company
+
+ Project:  LAB2
+ FileName: LAB2.PRO
+ Purpose: No description
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+include "lab2.inc"
+
+predicates
+
+  lab2()
+
+clauses
+
+  lab2():-!.
+
+goal
+
+  lab2().

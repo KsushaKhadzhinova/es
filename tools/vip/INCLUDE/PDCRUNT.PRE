@@ -1,0 +1,203 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ Project:
+ FileName: PDCRUNT.PRE
+ Purpose:  Miscellaneous predicates from PROLOG.LIB
+ Written by: Compiler Group
+ Comments:
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+    18/04/97    บSPB000บ Inner : predicates systemFreeGStack
+    06/05/97    บSPB000บ Inner : added some predicates( string file etc.)
+    04/05/97    บSPB000บ Inner : added objects_Diagnostic predicate
+    10/09/97    บSPB000บ Inner : added pdc_GetLibraryVersion predicate
+    12/10/97	บSPB000บ Inner : added pdc_GetCompilerVersion predicate
+    06/11/98	บSPB000บ Inner : added ASCIIZ_2_VB_String predicate
+                บ      บ
+******************************************************************************/
+
+ifndef pdcrunt_dom_included
+  #error pdcrunt.dom must be included
+enddef
+
+ifndef types_dom_included
+  #error types.dom must be included
+enddef
+
+  constants
+    pdcrunt_pre_included = 1
+      ifdef platform_32bit
+        ifdef os_nt
+          XLang			= stdcall
+          MEM_ALLOCHEAP_FNS	= "MEM_AllocHeap"
+          MEM_RELEASEHEAP_FNS	= "MEM_ReleaseHeap"
+        enddef
+        ifdef os_os2
+          XLang			= pascal
+          MEM_ALLOCHEAP_FNS	= "MEM_ALLOCHEAP"
+          MEM_RELEASEHEAP_FNS	= "MEM_RELEASEHEAP"
+        enddef
+        ifdef os_unix
+          XLang			= c
+          MEM_ALLOCHEAP_FNS	= "MEM_AllocHeap"
+          MEM_RELEASEHEAP_FNS	= "MEM_ReleaseHeap"
+        enddef
+      enddef
+      ifdef platform_16bit
+        XLang			= pascal
+        MEM_ALLOCHEAP_FNS	= "MEM_ALLOCHEAP"
+        MEM_RELEASEHEAP_FNS	= "MEM_RELEASEHEAP"
+      enddef
+
+
+
+/****************************************************************************
+				Memory handling
+****************************************************************************/
+
+				/* Handling of gstack */
+global predicates
+
+PROCEDURE POINTER mem_AllocGStack( UNSIGNED size) - ( i ) language c as "_MEM_AllocGStack"
+
+ifdef platform_32bit
+  PROCEDURE UNSIGNED mem_GetBigGStack( UNSIGNED Request ) - ( i ) language c as "_MEM_GetBigGStack"
+  PROCEDURE mem_systemFreeGStack() - language c as "_MEM_SystemFreeGStack"	/* SPB000 18/04/97 */
+elsedef
+  PROCEDURE POINTER  mem_AllocNormGStack( UNSIGNED Size ) - ( i ) language c as "_MEM_AllocNormGStack"
+  PROCEDURE UNSIGNED mem_GetMaxGStack() - language c as "_MEM_GETMAXGSTACK"
+enddef
+  mem_AdjustGStackAlloc( POINTER Adr, UNSIGNED Realsiz) - ( i, i ) language c as "_MEM_AdjustGStackAlloc"
+ifndef os_unix
+  PROCEDURE STACKMARK mem_MarkGStack() - language  c as "_MEM_MarkGStack"
+  PROCEDURE mem_ReleaseGStack( STACKMARK ) - ( i ) language c as "_MEM_ReleaseGStack"
+elsedef
+  PROCEDURE mem_MarkGStack( STACKMARK ) - ( o ) language  c as "_MEM_UnixMarkGStack"
+  PROCEDURE mem_ReleaseGStack( STACKMARK ) - ( i ) language c as "_MEM_UnixReleaseGStack"
+enddef
+  PROCEDURE objects_Diagnostic() - language c as "_MEM_ObjectsDiag"
+
+
+
+
+				/* Handling of HEAP */
+
+PROCEDURE POINTER mem_AllocHeap( UNSIGNED Size ) - ( i ) language XLang as MEM_ALLOCHEAP_FNS
+PROCEDURE mem_ReleaseHeap( POINTER Adr, UNSIGNED Size) - ( i, i ) language XLang as MEM_RELEASEHEAP_FNS
+PROCEDURE POINTER mem_ReAllocHeap( POINTER Old, UNSIGNED OldSize, UNSIGNED NewSize) - ( i, i, i ) language c as "_MEM_ReAllocHeap"
+
+				/* Allocating and releasing a binary */
+
+PROCEDURE BINARY mem_MakeBinaryGStack( UNSIGNED NoOfBytes ) - ( i ) language c as "_MEM_MakeBinaryGStack"
+PROCEDURE BINARY mem_MakeBinaryHeap( UNSIGNED NoOfBytes ) - ( i ) language c as "_MEM_MakeBinaryHeap"
+PROCEDURE mem_ReleaseBinaryHeap( BINARY ) - ( i ) language c as "_MEM_ReleaseBinaryHeap"
+
+				/* Making a string permanent */
+
+PROCEDURE STRING mem_SaveStringGStack( STRING ) - ( i ) language c as "_MEM_SaveStringGStack"
+PROCEDURE STRING mem_SaveStringHeap( STRING ) - ( i ) language c as "_MEM_SaveStringHeap"
+PROCEDURE mem_ReleaseStringHeap( STRING ) - ( i ) language c as "_MEM_ReleaseStringHeap"
+
+				/* Copying a binary to another location */
+PROCEDURE BINARY  mem_SaveBinaryGStack( BINARY ) - ( i ) language c as "_MEM_SaveBinaryGStack"
+PROCEDURE BINARY  mem_SaveBinaryHeap( BINARY ) - ( i ) language c as "_MEM_SaveBinaryHeap"
+
+				/* Copying a piece of memory to another location */
+
+PROCEDURE POINTER mem_NewCopyHeap( POINTER Adr, UNSIGNED Size ) - ( i, i ) language c as "_MEM_NewCopyHeap"
+PROCEDURE POINTER mem_NewCopyGStack( POINTER Adr, UNSIGNED Size ) - ( i, i ) language c as "_MEM_NewCopyGStack"
+
+				/* Handy often used functions */
+
+PROCEDURE movmem( POINTER Source, POINTER Dest, UNSIGNED Len) -( i, i, i ) language c as "_MEM_MovMem"
+PROCEDURE movmem( BINARY Src, BINARY Dst, UNSIGNED Bytes ) - (i,i,i) language c as "_MEM_MovMem"
+PROCEDURE setmem( POINTER Dest, UNSIGNED count, BYTE value) - ( i, i, i ) language c as "_MEM_SetMem"
+PROCEDURE setmem( BINARY Dst, UNSIGNED Length, BYTE Val )  - (i,i,i) language c as "_MEM_SetMem"
+PROCEDURE setmem0( POINTER Dst, UNSIGNED Length )	- (i,i)  language c as "_MEM_SetMem0"
+PROCEDURE setmem0( BINARY Dst, UNSIGNED Length )	- (i,i)   language c as "_MEM_SetMem0"
+
+				/* String handling */
+
+PROCEDURE list_to_string( SLIST  StrList,
+			  STRING Separator,
+			  STRING OutPutString )
+						- (i,i,o) language c as "_STR_List_To_String"
+
+
+separate_string( STRING InPutString,
+		 STRING SepString,
+		 STRING Head,
+		 CHAR   Separator,
+		 STRING Rest )
+				- (i,i,o,o,o) language c as "_STR_Separate_String"
+
+
+
+PROCEDURE INTEGER   str_StrCmp( STRING , STRING ) - ( i, i )	language c as "_STR_StrCmp"
+PROCEDURE INTEGER   str_StrNCmp( STRING, STRING, UNSIGNED) - ( i, i, i ) language c as "_STR_StrNCmp"
+PROCEDURE INTEGER   str_StrCmpi( STRING, STRING ) - ( i, i ) language c as "_STR_StrCmpi"
+
+				/* file time handling */
+
+PROCEDURE file_time( STRING       Filename,
+		     OS_FILESTAMP Os_filetime )	- (i, o), ( i, i ) language c
+
+
+
+/****************************************************************************
+				Error handling
+****************************************************************************/
+
+				/* Activate an error during execution */
+
+ERRONEOUS run_Error( UNSIGNED errorno ) - ( i ) language c as "_RUN_Error"
+
+				/* Error code from RUN_error or exit */
+
+PROCEDURE UNSIGNED  run_GetExitCode() - language c  as "_RUN_GetExitCode"
+
+ERRONEOUS run_ErrorContinue( UNSIGNED ErrorNo )	- (i) language c as "_RUN_ErrorCont"
+
+
+/* Flag to tell whether last exit was an error or not
+ TRUE if trap activated by RUN_error, FALSE with RUN_exit */
+
+PROCEDURE char run_GetErrorFlag() - language c as "_RUN_GetErrorFlag"
+
+PROCEDURE err_SetAdditiveInfo( STRING AdditiveInfo )  - ( i ) language c as "_ERR_SetAdditiveInfo"
+
+
+/****************************************************************************
+				Miscellaneous
+****************************************************************************/
+				/* Return current stacktop (SP) */
+
+PROCEDURE UNSIGNED run_GetSP() - language c as "_RUN_GetSP"
+
+ifndef os_unix
+  PROCEDURE string hash_BinInsert( string ) - ( i ) language c as "_HASH_BinInsert"
+
+
+  PROCEDURE hash_Print() - language c as "_HASH_Print"
+enddef
+
+PROCEDURE err_InstallUserRepFns( TUserErrRepFns )	- ( i ) language c as "_ERR_InstallUserRepFns"
+
+PROCEDURE STRING pdc_GetLibraryVersion() - language c as "_PDC_GetLibraryVersion"
+
+/* Note: is situated in COMPILER.LIB */
+PROCEDURE STRING pdc_GetCompilerVersion() - language c as "_PDC_GetCompilerVersion"
+
+/* Note: is situated inside Linker */
+PROCEDURE STRING pdc_GetLinkerVersion() - language c as "_PDC_GetLinkerVersion"
+
+ifdef os_nt
+  /* SPB000 06/11/98 */
+  PROCEDURE ASCIIZ_2_VB_String( STRING Source, STRING Dest ) - ( i, o ) language c
+enddef

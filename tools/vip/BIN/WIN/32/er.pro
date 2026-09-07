@@ -1,0 +1,24 @@
+/*****************************************************************************
+
+		Copyright (c) My Company
+
+ Project:  ER
+ FileName: ER.PRO
+ Purpose: No description
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+
+
+predicates
+
+ nondeterm work
+
+clauses
+
+  work:- write("hello"),nl.
+
+goal
+
+  work.

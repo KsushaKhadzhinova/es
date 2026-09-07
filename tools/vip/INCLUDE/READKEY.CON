@@ -1,0 +1,209 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ Project:
+ FileName: READKEY.CON
+ Purpose:  help file to do portable textmode key handling to UNIX
+ Written by: Compiler Group
+ Comments:
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+                บ      บ
+******************************************************************************/
+
+% help file to do portable textmode key handling to UNIX
+% Not used in VPI projects !
+
+ifdef os_unix
+
+constants
+	/* Terminfo keys for UNIX terminal interface */
+
+  key_break_ = 1	%	break key (unreliable)
+  key_down_ = 2		%	The four arrow keys ...
+  key_up_ = 3		%
+  key_left_ = 4		%
+  key_right_ = 5	%	...
+  key_home_ = 6		%	Home key (upward+left arrow)
+  key_backspace_ = 7	%	backspace (unreliable)
+  key_f0_ = 8		%	64 Function keys...
+  key_f1_ = 9		%
+  key_f2_ = 10		%
+  key_f3_ = 11		%
+  key_f4_ = 12		%
+  key_f5_ = 13		%
+  key_f6_ = 14		%
+  key_f7_ = 15		%
+  key_f8_ = 16		%
+  key_f9_ = 17		%
+  key_f10_ = 18		%
+  key_f11_ = 19		%
+  key_f12_ = 20		%
+  key_f13_ = 21		%
+  key_f14_ = 22		%
+  key_f15_ = 23		%
+  key_f16_ = 24		%
+  key_f17_ = 25		%
+  key_f18_ = 26		%
+  key_f19_ = 27		%
+  key_f20_ = 28		%
+  key_f21_ = 29		%
+  key_f22_ = 30		%
+  key_f23_ = 31		%
+  key_f24_ = 32		%
+  key_f25_ = 33		%
+  key_f26_ = 34		%
+  key_f27_ = 35		%
+  key_f28_ = 36		%
+  key_f29_ = 37		%
+  key_f30_ = 38		%
+  key_f31_ = 39		%
+  key_f32_ = 40		%
+  key_f33_ = 41		%	
+  key_f34_ = 42		%	
+  key_f35_ = 43		%	
+  key_f36_ = 44		%	
+  key_f37_ = 45		%	
+  key_f38_ = 46		%	
+  key_f39_ = 47		%	
+  key_f40_ = 48		%	
+  key_f41_ = 49		%	
+  key_f42_ = 50		%	
+  key_f43_ = 51		%	
+  key_f44_ = 52		%	
+  key_f45_ = 53		%	
+  key_f46_ = 54		%	
+  key_f47_ = 55		%	
+  key_f48_ = 56		%	
+  key_f49_ = 57		%	
+  key_f50_ = 58		%	
+  key_f51_ = 59		%	
+  key_f52_ = 60		%	
+  key_f53_ = 61		%	
+  key_f54_ = 62		%	
+  key_f55_ = 63		%	
+  key_f56_ = 64		%	
+  key_f57_ = 65		%	
+  key_f58_ = 66		%	
+  key_f59_ = 67		%	
+  key_f60_ = 68		%	
+  key_f61_ = 69		%	
+  key_f62_ = 70		%	
+  key_f63_ = 71		%	
+  key_dl_ = 72		%	Delete line
+  key_il_ = 73		%	Insert line
+  key_dc_ = 74		%	Delete character
+  key_ic_ = 75		%	Insert char or enter insert mode
+  key_eic_ = 76		%	Exit insert char mode
+  key_clear_ = 77	%	Clear screen
+  key_eos_ = 78		%	Clear to end of screen
+  key_eol_ = 79		%	Clear to end of line
+  key_sf_ = 80		%	Scroll 1 line forward
+  key_sr_ = 81		%	Scroll 1 line backwards (reverse)
+  key_npage_ = 82	%	Next page
+  key_ppage_ = 83	%	Previous page
+  key_stab_ = 84	%	Set tab
+  key_ctab_ = 85	%	Clear tab
+  key_catab_ = 86	%	Clear all tabs
+  key_enter_ = 87	%	Enter or send
+  key_sreset_ = 88	%	soft (partial) reset
+  key_reset_ = 89	%	reset or hard reset
+  key_print_ = 90	%	print or copy
+  key_ll_ = 91		%	home down or bottom (lower left)
+  key_a1_ = 92		%	Upper left of keypad
+  key_a3_ = 93		%	Upper right of keypad
+  key_b2_ = 94		%	Center of keypad
+  key_c1_ = 95		%	Lower left of keypad
+  key_c3_ = 96		%	Lower right of keypad
+  key_btab_ = 97	%	Back tab key
+  key_beg_ = 98		%	beg(inning) key
+  key_cancel_ = 99	%	cancel key
+  key_close_ = 100	%	close key
+  key_command_ = 101	%	cmd (command) key
+  key_copy_ = 102	%	copy key
+  key_create_ = 103	%	create key
+  key_end_ = 104	%	end key
+  key_exit_ = 105	%	exit key
+  key_find_ = 106	%	find key
+  key_help_ = 107	%	help key
+  key_mark_ = 108	%	mark key
+  key_message_ = 109	%	message key
+  key_move_ = 110	%	move key
+  key_next_ = 111	%	next object key
+  key_open_ = 112	%	open key
+  key_options_ = 113	%	options key
+  key_previous_ = 114	%	previous object key
+  key_redo_ = 115	%	redo key
+  key_reference_ = 116	%	ref(erence) key
+  key_refresh_ = 117	%	refresh key
+  key_replace_ = 118	%	replace key
+  key_restart_ = 119	%	restart key
+  key_resume_ = 120	%	resume key
+  key_save_ = 121	%	save key
+  key_sbeg_ = 122	%	shifted beginning key
+  key_scancel_ = 123	%	shifted cancel key
+  key_scommand_ = 124	%	shifted command key
+  key_scopy_ = 125	%	shifted copy key
+  key_screate_ = 126	%	shifted create key
+  key_sdc_ = 127	%	shifted delete char key
+  key_sdl_ = 128	%	shifted delete line key
+  key_select_ = 129	%	select key
+  key_send_ = 130	%	shifted end key
+  key_seol_ = 131	%	shifted clear line key
+  key_sexit_ = 132	%	shifted exit key
+  key_sfind_ = 133	%	shifted find key
+  key_shelp_ = 134	%	shifted help key
+  key_shome_ = 135	%	shifted home key
+  key_sic_ = 136	%	shifted input key
+  key_sleft_ = 137	%	shifted left arrow key
+  key_smessage_ = 138	%	shifted message key
+  key_smove_ = 139	%	shifted move key
+  key_snext_ = 140	%	shifted next key
+  key_soptions_ = 141	%	shifted options key
+  key_sprevious_ = 142	%	shifted prev key
+  key_sprint_ = 143	%	shifted print key
+  key_sredo_ = 144	%	shifted redo key
+  key_sreplace_ = 145	%	shifted replace key
+  key_sright_ = 146	%	shifted right arrow
+  key_srsume_ = 147	%	shifted resume key
+  key_ssave_ = 148	%	shifted save key
+  key_ssuspend_ = 149	%	shifted suspend key
+  key_sundo_ = 150	%	shifted undo key
+  key_suspend_ = 151	%	suspend key
+  key_undo_ = 152	%	undo key
+
+elsedef
+
+constants
+	/* Scan-codes for DOS (-derived) systems */
+
+  key_break_ = 3
+  key_backspace_ = 8
+  key_btab_ = 15
+  key_dc_ = 83
+  key_ic_ = 82
+  key_up_ = 72
+  key_down_ = 80
+  key_left_ = 75
+  key_right_ = 77
+  key_ppage_ = 73
+  key_npage_ = 81
+  key_end_ = 79
+  key_home_ = 71
+
+/* The key_ctrl* values only apply to DOS (-derived) systems */
+  key_ctrlleft_ = 115
+  key_ctrlright_ = 116
+  key_ctrlend_ = 117
+  key_ctrlnpage_ = 118
+  key_ctrlhome_ = 119
+  key_ctrlppage_ = 132
+  key_f0_ = 58	% In DOS (-derived) systems, this doesn't really exist
+  key_f10_ = 69
+
+enddef

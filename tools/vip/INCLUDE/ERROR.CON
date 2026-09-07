@@ -1,0 +1,2007 @@
+/*****************************************************************************
+
+
+
+               Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+
+
+			VISUAL Prolog
+
+
+
+ FileName: error.con
+
+ Purpose: declaration of error constants 
+
+ Written by: PDC
+
+ Comments:
+
+
+
+******************************************************************************/
+
+
+
+constants
+
+  error_con_included = 1
+
+
+
+
+
+constants
+
+  err_run_time =                        1000
+
+  err_invar    =                        1000
+
+
+
+
+
+constants
+
+%/* DOS error's are defines in DOSERROR.H */
+
+  dos_error_offset =     7000
+
+  bgi_error_offset =     1700
+
+  os2_error_offset =     7000
+
+  unx_error_offset =     7000
+
+
+
+
+
+%/***************************************************************************
+
+%        MEM-related errors
+
+%***************************************************************************/
+
+
+
+  err_gstackoverflow =   1001
+
+  err_heapoverflow =     1002
+
+  err_heaptoobig =       1003 /* Requested block is too big (max 0xFFF0 bytes). */
+
+  err_heapbadsize =      1004 /* Mismatch between freed blocks size and what user thinks it is. */
+
+  err_heapfreeblock =    1005 /* Attempt to release already released block. */
+
+  err_heapbadsignature = 1006
+
+  err_convterm =         1007
+
+  err_meminitfailure =   1008
+
+  err_gpfault =          1009
+
+  err_stackoverflow =    1010
+
+  err_trailoverflow =    1020
+
+
+
+  err_object_does_not_exist = 1024
+
+
+
+
+
+  err_matherrbase =      1029   /* To give pfp errors 1, 2, etc */
+
+  err_realoverflow =     1030
+
+  err_integeroverflow =  1031
+
+  err_divzero =          1032
+
+  err_negzero =          1033
+
+  err_neg =              1034
+
+
+
+%/***************************************************************************
+
+%       Misc
+
+%***************************************************************************/
+
+
+
+  err_freevariable =     1040
+
+  err_determfact =       1041
+
+  err_arrayindex =       1045
+
+  err_makebinary =       1046    /* Size bigger than 64K */
+
+  err_invalidterm =      1047    % Spoiled memory
+
+  err_comlinetoolong =   1048    % SPB_250195: Too long command line
+
+
+
+  err_exception =            1050
+
+  err_internal_error = 1051
+
+  err_wrong_timemark_values = 1052
+
+
+
+%/* SPB067 begin */
+
+  err_invalid_block =   1081
+
+  err_invalid_format =  1082
+
+  err_decode_internal = 1083
+
+%/* SPB067 end */
+
+
+
+%/***************************************************************************
+
+%        Errors for IO & OS module
+
+%***************************************************************************/
+
+
+
+  err_alreadyopen =      1101    /* File already open */
+
+  err_inpdev =           1102    /* Wrong mode in input device */
+
+  err_outpdev =          1103    /* Wrong mode in output device */
+
+  err_notopen =          1104    /* The file is not open */
+
+  err_filemode =         1105    /* Bad value in filemode pred */
+
+  err_invdevicemode =    1106    /* Invalid operation on device */
+
+  err_eof =              1107    /* Wrong filemode for eof predicate */
+
+  err_invalid_disk =     1108    /* Invalid disk */
+
+  err_formatlen =        1109    /* Wrong number of arguments for format */
+
+  err_filetoobig =       1110    /* File too big, or not enough memory */
+
+  err_readlen =          1111    /* Wrong number of bytes read */
+
+  err_writelen =         1112    /* Wrong number of bytes written */
+
+  err_invalid_date =     1113    /* Wrong date */
+
+  err_invalid_time =     1114    /* Wrong time */
+
+  err_unrdch =           1115    /* Keyboard buffer full */
+
+  err_systemnotfound =   1116    /* File not found */
+
+  err_execextprog =      1117    /* Error in executing system pred */
+
+  err_portaccess =       1118    /* Port busy (OS/2 & UNIX only). */
+
+  err_osversion =        1133    /* Wrong version of operating sys */
+
+  err_invalidpath =      1134    /*  */
+
+  err_fnametoolong =     1135    /*  */
+
+  err_hz =               1136    /* Unknown ticks (from UX sleep.c)     */
+
+  err_linetoolong =      1137    /* No newline found in IO_getln. */
+
+  err_syspathnotinit =   1138    /* initsyspath not called */
+
+  err_printspool =       1139    /* error calling lp (UNIX) */
+
+  err_formatoflo =       1140    /* writef/format buffer oflo */
+
+
+
+%/***************************************************************************
+
+%        Error codes for SCR & WD module
+
+%***************************************************************************/
+
+
+
+  err_window_parms =     1201        /* Bad window arguments */
+
+  err_bad_cursor =       1202        /* Bad cursor position */
+
+  err_unknown_window =   1203        /* Window does not exist */
+
+  err_too_many_wind =    1205        /* Maximum number of wind */
+
+  err_resize =           1206        /* Bad args in resize */
+
+  err_textmode_run =     1207        /* Wrong screenmode for scroll */
+
+  err_badtextmode =      1208        /* Bad argumentsfor textmode */
+
+  err_removewd =         1209        /* Bad operation on syswind */
+
+  err_syswindow =        1210        /* Illegal operation on sys wind. */
+
+  err_already_compress = 1211
+
+  err_already_expand =   1212
+
+  err_badframestring =   1213        /* Not 6 chars in framestring */
+
+  err_insuftcap =        1214
+
+%/* SPB_250195 */
+
+  err_nomessagewin =     1215    /* Write/read attempt without messagewin */
+
+
+
+%/***************************************************************************
+
+%        Errors for DB module
+
+%***************************************************************************/
+
+
+
+  err_above_overflow =  1301
+
+  err_already_open =    1302
+
+  err_invaliddatabase = 1303
+
+  err_not_open =        1304
+
+  err_index_notopen =   1305
+
+  err_index_exist =     1306
+
+  err_dbasename_exist = 1308
+
+  err_cant_reopen =     1309
+
+  err_invalid_order =   1310
+
+  err_invalid_keylen =  1311
+
+  err_type_conflict =   1313
+
+  err_cant_create =     1314
+
+  err_cant_open =       1315
+
+  err_no_ems =          1316
+
+  err_marked_invalid =  1317
+
+  err_cant_delete =     1318
+
+  err_invalid_ref =     1319
+
+  err_chain_not_exist = 1320
+
+  err_index_not_exist = 1321
+
+  err_invalid_index =   1322
+
+  err_index_open =      1323
+
+  err_key_not_found =   1324
+
+  err_term_too_big =    1325
+
+  err_invalid_ver_db =  1326
+
+  err_not_begin =       1327
+
+  err_incomp_modes =    1328
+
+  err_insidetransact =  1330
+
+  err_notwritetrans =   1331
+
+  err_transtimeout =    1332
+
+  err_keyalreadyexist = 1333
+
+  err_termdel =         1334
+
+  err_dbloadsavems =    1335
+
+
+
+
+
+%/***************************************************************************
+
+%        Errors in term reader
+
+%***************************************************************************/
+
+
+
+  err_intgexpect =       1401 /* Integer expected. */
+
+  err_realexpect =       1402 /* Real number expected. */
+
+  err_dquoteexpect =     1403 /* Double quote expected. */
+
+  err_squoteexpect =     1404 /* Single quote expected. */
+
+  err_listexpect =       1405 /* List start expected. */
+
+  err_endlistexpect =    1406 /* End of list expected. */
+
+  err_functorunknown =   1407 /* Functor not found in domain. */
+
+  err_bracketexpect =    1408 /* '(' expected. */
+
+  err_commaorbexpect =   1409 /* ',' or ')' expected. */
+
+  err_dollarexpect =     1410
+
+  err_refexpect =        1411
+
+
+
+
+
+%/***************************************************************************
+
+%        Error for editor
+
+%***************************************************************************/
+
+
+
+  err_tekstfull =        1501
+
+
+
+  err_toomanyedobj =     1502
+
+
+
+%/***************************************************************************
+
+%        Error codes for PSTR (Prolog STRing handling) module
+
+%***************************************************************************/
+
+
+
+  err_string_index =     1601
+
+  err_string_too_long =  1602
+
+
+
+
+
+%/***************************************************************************
+
+%        Error codes for BGI module
+
+%***************************************************************************/
+
+
+
+  err_bginotinstall =     1701
+
+  err_bginographware =    1702
+
+  err_bgidrivernotfound = 1703
+
+  err_bgiinvdriv =        1704
+
+  err_bgimemdriv =        1705
+
+  err_bgimemscan =        1706
+
+  err_bgimemfill =        1707
+
+  err_bgifontnotfound =   1708
+
+  err_bgimemfont =        1709
+
+  err_bgiinvgrmode =      1710
+
+  err_bgigrapherr =       1711
+
+  err_bgiioerr =          1712
+
+  err_bgiinvfont =        1713
+
+  err_bgiinvfontnum =     1714
+
+  err_bgiinvdevnum =      1715
+
+  err_wrong_pattern_len = 1750
+
+
+
+%/***************************************************************************
+
+%        Errors for MSG module
+
+%***************************************************************************/
+
+
+
+  err_noqelems =         1801
+
+  err_pipeclosed =       1802
+
+  err_pipebroken =       1803
+
+  err_cannotopenpipe =   1804
+
+  err_invpipename =      1805
+
+  err_pipenotopen =      1806
+
+
+
+%/***************************************************************************
+
+%        Error for dir browser
+
+%***************************************************************************/
+
+
+
+  err_toomanyfiles =     1901
+
+
+
+%/***************************************************************************
+
+%        Error codes for reading / writing of configuration file
+
+%***************************************************************************/
+
+
+
+  err_wrong_config_file = 2001
+
+  err_read_config_file =  2002
+
+
+
+%/***************************************************************************
+
+%        Error codes for OS/2 Dialog Manager
+
+%***************************************************************************/
+
+
+
+  err_no_value =         2101
+
+  err_wrong_type =       2102
+
+  err_index_too_big =    2103
+
+
+
+%/***************************************************************************
+
+%        SPB_281294: Offset for PDC Utilities errors
+
+%***************************************************************************/
+
+
+
+  err_utilsoffset =      2400
+
+
+
+%Errors for CHKDOMS utility
+
+  err_chkdom_fatal_error                = 2401
+
+  err_chkdom_invalid_parameters         = 2402
+
+  err_chkdom_out_of_memory              = 2403
+
+  err_chkdom_invalid_response_file      = 2404
+
+  err_chkdom_invalid_object_file        = 2405
+
+  err_chkdom_few_params                 = 2406
+
+  err_chkdom_non_pdc_object_file        = 2407
+
+  err_chkdom_domain_not_found           = 2408
+
+  err_chkdom_different_domains_sequence = 2409
+
+  err_chkdom_different_domain           = 2410
+
+  err_chkdom_extra_domain               = 2411
+
+  err_chkdom_just_symbol_table          = 2412
+
+  err_chkdom_long_line_in_response      = 2413
+
+
+
+%/***************************************************************************
+
+%        Unix errors 5000-5999
+
+%***************************************************************************/
+
+
+
+  error_unix_not_privileged			                = 5001
+
+  error_unix_no_such_file_or_directory		                = 5002
+
+  error_unix_no_such_process			                = 5003
+
+  error_unix_interrupted_system_call		                = 5004
+
+  error_unix_i_o_error				                = 5005
+
+  error_unix_no_such_device_or_address		                = 5006
+
+  error_unix_arg_list_too_long			                = 5007
+
+  error_unix_exec_format_error			                = 5008
+
+  error_unix_bad_file_number			                = 5009
+
+  error_unix_no_child_processes			                = 5010
+
+  error_unix_resource_temporarily_unavailable	                = 5011
+
+  error_unix_not_enough_space			                = 5012
+
+  error_unix_permission_denied			                = 5013
+
+  error_unix_bad_address			                = 5014
+
+  error_unix_block_device_required		                = 5015
+
+  error_unix_device_busy			                = 5016
+
+  error_unix_file_exists			                = 5017
+
+  error_unix_cross_device_link			                = 5018
+
+  error_unix_no_such_device			                = 5019
+
+  error_unix_not_a_directory			                = 5020
+
+  error_unix_is_a_directory			                = 5021
+
+  error_unix_invalid_argument			                = 5022
+
+  error_unix_file_table_overflow		                = 5023
+
+  error_unix_too_many_open_files		                = 5024
+
+  error_unix_not_a_typewriter			                = 5025
+
+  error_unix_text_file_busy			                = 5026
+
+  error_unix_file_too_large			                = 5027
+
+  error_unix_no_space_left_on_device		                = 5028
+
+  error_unix_illegal_seek			                = 5029
+
+  error_unix_read_only_file_system		                = 5030
+
+  error_unix_too_many_links			                = 5031
+
+  error_unix_broken_pipe			                = 5032
+
+  error_unix_math_argument_out_of_domain_func	                = 5033
+
+  error_unix_math_result_not_representable	                = 5034
+
+  error_unix_no_message_of_desired_type		                = 5035
+
+  error_unix_identifier_removed			                = 5036
+
+  error_unix_channel_number_out_of_range	                = 5037
+
+  error_unix_level_2_not_synchronized		                = 5038
+
+  error_unix_level_3_halted			                = 5039
+
+  error_unix_level_3_reset			                = 5040
+
+  error_unix_link_number_out_of_range		                = 5041
+
+  error_unix_protocol_driver_not_attached	                = 5042
+
+  error_unix_no_csi_structure_available		                = 5043
+
+  error_unix_level_2_halted			                = 5044
+
+  error_unix_deadlock_condition			                = 5045
+
+  error_unix_no_record_locks_available		                = 5046
+
+  error_unix_device_not_a_stream		                = 5060
+
+  error_unix_no_data_available			                = 5061
+
+  error_unix_timer_expired			                = 5062
+
+  error_unix_out_of_stream_resources		                = 5063
+
+  error_unix_machine_is_not_on_the_network	                = 5064
+
+  error_unix_package_not_installed		                = 5065
+
+  error_unix_object_is_remote			                = 5066
+
+  error_unix_link_has_been_severed		                = 5067
+
+  error_unix_advertise_error			                = 5068
+
+  error_unix_srmount_error			                = 5069
+
+  error_unix_communication_error_on_send	                = 5070
+
+  error_unix_protocol_error			                = 5071
+
+  error_unix_multihop_attempted			                = 5074
+
+  error_unix_inode_is_remote			                = 5075
+
+  error_unix_error_76				                = 5076
+
+  error_unix_not_a_data_message			                = 5077
+
+  error_unix_filename_too_long			                = 5078
+
+  error_unix_value_too_large_for_defined_data_type     		= 5079
+
+  error_unix_name_not_unique_on_network		       		= 5080
+
+  error_unix_file_descriptor_in_bad_state	       		= 5081
+
+  error_unix_remote_address_changed		       		= 5082
+
+  error_unix_can_not_access_a_needed_shared_library    		= 5083
+
+  error_unix_accessing_a_corrupted_shared_library      		= 5084
+
+  error_unix_lib_section_in_a_out_corrupted	       		= 5085
+
+  error_unix_attempting_to_link_in_more_shared_library_directly = 5086
+
+  error_unix_can_not_exec_a_shared_library_directly		= 5087
+
+  error_unix_illegal_byte_sequence	       			= 5088
+
+  error_unix_function_not_implemented	       			= 5089
+
+  error_unix_operation_would_block	       			= 5090
+
+  error_unix_operation_now_in_progress	       			= 5091
+
+  error_unix_operation_already_in_progress     			= 5092
+
+  error_unix_socket_operation_on_non_socket    			= 5093
+
+  error_unix_destination_address_required      			= 5094
+
+  error_unix_message_too_long		       			= 5095
+
+  error_unix_protocol_wrong_type_for_socket    			= 5096
+
+  error_unix_protocol_not_supported	       			= 5097
+
+  error_unix_socket_type_not_supported	       			= 5098
+
+  error_unix_operation_not_supported_on_transport_endpoint	= 5099
+
+  error_unix_protocol_family_not_supported			= 5100
+
+  error_unix_transport_endpoint_is_not_connected		= 5111
+
+  error_unix_cannot_send_after_transport_endpoint_shutdown	= 5112
+
+  error_unix_too_many_references_cannot_splice			= 5113
+
+  error_unix_connection_timed_out				= 5114
+
+  error_unix_connection_refused					= 5115
+
+  error_unix_host_is_down					= 5116
+
+  error_unix_no_route_to_host					= 5117
+
+  error_unix_protocol_not_available				= 5118
+
+  error_unix_structure_needs_cleaning				= 5135
+
+  error_unix_not_a_xenix_system_named_type_file			= 5137
+
+  error_unix_no_xenix_system_semaphores__available		= 5138
+
+  error_unix_is_a_name_file					= 5139
+
+  error_unix_remote_i_o_error_xenix				= 5140
+
+  error_unix_reserved_for_future_use_0				= 5141
+
+  error_unix_reserved_for_future_use_1				= 5142
+
+  error_unix_directory_not_empty				= 5145
+
+  error_unix_too_many_symbolic_links_in_path			= 5150
+
+  error_unix_stale_nfs_file_handle				= 5151
+
+  error_unix_restartable_system_call				= 5152
+
+  error_unix_stream_pipe_error					= 5153
+
+  error_unix_reserved_for_future_use_2				= 5500
+
+
+
+%/***************************************************************************
+
+%        VPI & EDITOR errors
+
+%***************************************************************************/
+
+
+
+  error_vpi_win_win 		= 6000
+
+  error_vpi_win_type      	= 6001
+
+  error_vpi_data_alloc    	= 6002
+
+  error_vpi_list_empty    	= 6003
+
+  error_vpi_list_member   	= 6004
+
+  error_vpi_file_open     	= 6005
+
+  error_vpi_file_create   	= 6006
+
+  error_vpi_file_empty   	= 6007
+
+  error_vpi_platform_valid      = 6008
+
+  error_vpi_init_fail   	= 6009
+
+  error_vpi_bad_const  	        = 6010
+
+  error_vpi_not_support         = 6011
+
+
+
+  error_vpi_find_dlg   	  	= 6050
+
+  error_vpi_find_cur   	   	= 6051
+
+  error_vpi_find_icon  		= 6052
+
+  error_vpi_find_menu     	= 6053
+
+  error_vpi_find_bmp  		= 6054
+
+  error_vpi_find_str  		= 6055
+
+
+
+  error_vpi_pict_err      	= 6100
+
+  error_vpi_pict_load     	= 6101
+
+  error_vpi_pict_close    	= 6102
+
+  error_vpi_pict_dc    	  	= 6103
+
+  error_vpi_pict_max    	= 6104
+
+
+
+  error_vpi_tim_kill      	= 6120
+
+  error_vpi_tim_set       	= 6121
+
+
+
+  error_vpi_font_set      	= 6150
+
+  error_vpi_font_get      	= 6151
+
+
+
+  error_vpi_dll_funfind         = 6170
+
+  error_vpi_exe_run      	= 6171
+
+  error_vpi_exe_close      	= 6172
+
+
+
+  error_vpi_prn_open      	= 6180
+
+  error_vpi_prn_start     	= 6181
+
+  error_vpi_prn_mem      	= 6182
+
+  error_vpi_prn_end     	= 6183
+
+  error_vpi_prn_begin           = 6184
+
+  error_vpi_prn_form            = 6185
+
+  error_vpi_prn_data            = 6186
+
+
+
+  error_vpi_data_file     	= 6200
+
+
+
+  error_vpi_data_size     	= 6210
+
+
+
+  error_vpi_class_reg     	= 6220
+
+
+
+  error_vpi_check_destroy       = 6230
+
+  error_vpi_check_draw     	= 6231
+
+
+
+  error_vpi_lbox_add       	= 6260
+
+
+
+  error_vpi_help_run      	= 6290
+
+
+
+  error_vpi_win_ctl       	= 6302
+
+  error_vpi_win_crtresdlg 	= 6304
+
+  error_vpi_win_crtdyndlg 	= 6305
+
+  error_vpi_win_create    	= 6306
+
+  error_vpi_win_createdyn 	= 6307
+
+  error_vpi_win_class     	= 6309
+
+  error_vpi_win_ctlid     	= 6310
+
+  error_vpi_win_sendevent 	= 6311
+
+  error_vpi_win_postevent 	= 6312
+
+  error_vpi_win_setfocus	= 6313
+
+  error_vpi_win_seltxt 	   	= 6314
+
+  error_vpi_win_move 		= 6315
+
+  error_vpi_win_ctlhndl   	= 6316
+
+  error_vpi_win_active          = 6317
+
+
+
+  error_vpi_meta_play     	= 6351
+
+  error_vpi_meta_load     	= 6352
+
+  error_vpi_meta_close    	= 6354
+
+  error_vpi_meta_format   	= 6356
+
+  error_vpi_meta_dc   		= 6357
+
+  error_vpi_meta_max    	= 6359
+
+
+
+  error_vpi_menu_create   	= 6401
+
+  error_vpi_menu_set   		= 6402
+
+  error_vpi_menu_find      	= 6403
+
+  error_vpi_menu_owndr   	= 6404
+
+
+
+  error_vpi_help_const          = 6422
+
+
+
+  error_vpi_clip_use		= 6450
+
+  error_vpi_clip_getbin 	= 6454
+
+  error_vpi_clip_getpict 	= 6455
+
+  error_vpi_clip_getmf 	        = 6456
+
+
+
+  error_vpi_dde_sync_advice_timeout          = 6600
+
+  error_vpi_dde_server_is_busy               = 6601
+
+  error_vpi_dde_sync_data_timeout            = 6602
+
+  error_vpi_dde_not_initialized              = 6603
+
+  error_vpi_dde_client_performs_server_trans = 6604
+
+  error_vpi_dde_sync_exec_timeout            = 6605
+
+  error_vpi_dde_param                        = 6606
+
+  error_vpi_dde_mem_consume                  = 6607
+
+  error_vpi_dde_mem_alloc                    = 6608
+
+  error_vpi_dde_transaction                  = 6609
+
+  error_vpi_dde_client_conservation          = 6610
+
+  error_vpi_dde_sync_poke_timeout            = 6611
+
+  error_vpi_dde_post_failed                  = 6612
+
+  error_vpi_dde_init_transaction             = 6613
+
+  error_vpi_dde_complete_transaction         = 6614
+
+  error_vpi_dde_internal                     = 6615
+
+  error_vpi_dde_advice_end_timeout           = 6616
+
+  error_vpi_dde_invalid_id                   = 6617
+
+  error_vpi_dde_sys	      	             = 6630
+
+  error_vpi_dde_init			     = 6631
+
+
+
+  error_vpi_edit_win		= 6900
+
+  error_vpi_edit_hyper		= 6901
+
+  error_vpi_edit_big		= 6902
+
+  error_vpi_edit_pos		= 6903
+
+  error_vpi_edit_undo	        = 6904
+
+  error_vpi_edit_redo	        = 6905
+
+  error_vpi_edit_big_out	= 6908
+
+  error_vpi_edit_line     	= 6909
+
+  error_vpi_edit_readonly       = 6910
+
+
+
+
+
+%/***************************************************************************
+
+%        Errors for PRN module ... only applies to DOS (-derived) systems
+
+%***************************************************************************/
+
+
+
+  err_prnalreadyopen =   2301
+
+
+
+  error_invalid_function =              7001
+
+  error_file_not_found =                7002
+
+  error_path_not_found =                7003
+
+  error_too_many_open_files =           7004
+
+  error_access_denied =                 7005
+
+  error_invalid_handle =                7006
+
+  error_arena_trashed =                 7007
+
+  error_not_enough_memory =             7008
+
+  error_invalid_block =                 7009
+
+  error_bad_environment =               7010
+
+  error_bad_format =                    7011
+
+  error_invalid_access =                7012
+
+  error_invalid_data =                  7013
+
+  error_invalid_drive =                 7015
+
+  error_current_directory =             7016
+
+  error_not_same_device =               7017
+
+  error_no_more_files =                 7018
+
+  error_write_protect =                 7019
+
+  error_bad_unit =                      7020
+
+  error_not_ready =                     7021
+
+  error_bad_command =                   7022
+
+  error_crc =                           7023
+
+  error_bad_length =                    7024
+
+  error_seek =                          7025
+
+  error_not_dos_disk =                  7026
+
+  error_sector_not_found =              7027
+
+  error_out_of_paper =                  7028
+
+  error_write_fault =                   7029
+
+  error_read_fault =                    7030
+
+  error_gen_failure =                   7031
+
+  error_sharing_violation =             7032
+
+  error_lock_violation =                7033
+
+  error_wrong_disk =                    7034
+
+  error_fcb_unavailable =               7035
+
+  error_sharing_buffer_exceeded =       7036
+
+  error_not_supported =                 7050
+
+  error_rem_not_list =                  7051
+
+  error_dup_name =                      7052
+
+  error_bad_netpath =                   7053
+
+  error_network_busy =                  7054
+
+  error_dev_not_exist =                 7055
+
+  error_too_many_cmds =                 7056
+
+  error_adap_hdw_err =                  7057
+
+  error_bad_net_resp =                  7058
+
+  error_unexp_net_err =                 7059
+
+  error_bad_rem_adap =                  7060
+
+  error_printq_full =                   7061
+
+  error_no_spool_space =                7062
+
+  error_print_cancelled =               7063
+
+  error_netname_deleted =               7064
+
+  error_network_access_denied =         7065
+
+  error_bad_dev_type =                  7066
+
+  error_bad_net_name =                  7067
+
+  error_too_many_names =                7068
+
+  error_too_many_sess =                 7069
+
+  error_sharing_paused =                7070
+
+  error_req_not_accep =                 7071
+
+  error_redir_paused =                  7072
+
+  error_file_exists =                   7080
+
+  error_dup_fcb =                       7081
+
+  error_cannot_make =                   7082
+
+  error_fail_i24 =                      7083
+
+  error_out_of_structures =             7084
+
+  error_already_assigned =              7085
+
+  error_invalid_password =              7086
+
+  error_invalid_parameter =             7087
+
+  error_net_write_fault =               7088
+
+  error_no_proc_slots =                 7089
+
+  error_not_frozen =                    7090
+
+  err_tstovfl =                         7091
+
+  err_tstdup =                          7092
+
+  error_no_items =                      7093
+
+  error_interrupt =                     7095
+
+  error_device_in_use =                 7099
+
+  error_too_many_semaphores =           7100
+
+  error_excl_sem_already_owned =        7101
+
+  error_sem_is_set =                    7102
+
+  error_too_many_sem_requests =         7103
+
+  error_invalid_at_interrupt_time =     7104
+
+  error_sem_owner_died =                7105
+
+  error_sem_user_limit =                7106
+
+  error_disk_change =                   7107
+
+  error_drive_locked =                  7108
+
+  error_broken_pipe =                   7109
+
+  error_open_failed =                   7110
+
+  error_buffer_overflow =               7111
+
+  error_disk_full =                     7112
+
+  error_no_more_search_handles =        7113
+
+  error_invalid_target_handle =         7114
+
+  error_protection_violation =          7115
+
+  error_viokbd_request =                7116
+
+  error_invalid_category =              7117
+
+  error_invalid_verify_switch =         7118
+
+  error_bad_driver_level =              7119
+
+  error_call_not_implemented =          7120
+
+  error_sem_timeout =                   7121
+
+  error_insufficient_buffer =           7122
+
+  error_invalid_name =                  7123
+
+  error_invalid_level =                 7124
+
+  error_no_volume_label =               7125
+
+  error_mod_not_found =                 7126
+
+  error_proc_not_found =                7127
+
+  error_wait_no_children =              7128
+
+  error_child_not_complete =            7129
+
+  error_direct_access_handle =          7130
+
+  error_negative_seek =                 7131
+
+  error_seek_on_device =                7132
+
+  error_is_join_target =                7133
+
+  error_is_joined =                     7134
+
+  error_is_substed =                    7135
+
+  error_not_joined =                    7136
+
+  error_not_substed =                   7137
+
+  error_join_to_join =                  7138
+
+  error_subst_to_subst =                7139
+
+  error_join_to_subst =                 7140
+
+  error_subst_to_join =                 7141
+
+  error_busy_drive =                    7142
+
+  error_same_drive =                    7143
+
+  error_dir_not_root =                  7144
+
+  error_dir_not_empty =                 7145
+
+  error_is_subst_path =                 7146
+
+  error_is_join_path =                  7147
+
+  error_path_busy =                     7148
+
+  error_is_subst_target =               7149
+
+  error_system_trace =                  7150
+
+  error_invalid_event_count =           7151
+
+  error_too_many_muxwaiters =           7152
+
+  error_invalid_list_format =           7153
+
+  error_label_too_long =                7154
+
+  error_too_many_tcbs =                 7155
+
+  error_signal_refused =                7156
+
+  error_discarded =                     7157
+
+  error_not_locked =                    7158
+
+  error_bad_threadid_addr =             7159
+
+  error_bad_arguments =                 7160
+
+  error_bad_pathname =                  7161
+
+  error_signal_pending =                7162
+
+  error_uncertain_media =               7163
+
+  error_max_thrds_reached =             7164
+
+  error_monitors_not_supported =        7165
+
+  error_unc_driver_not_installed =      7166
+
+
+
+  error_lock_failed =                   7167
+
+  error_swapio_failed =                 7168
+
+  error_swapin_failed =                 7169
+
+  error_busy =                          7170
+
+
+
+  error_invalid_segment_number =        7180
+
+  error_invalid_callgate =              7181
+
+  error_invalid_ordinal =               7182
+
+  error_already_exists =                7183
+
+  error_no_child_process =              7184
+
+  error_child_alive_nowait =            7185
+
+  error_invalid_flag_number =           7186
+
+  error_sem_not_found =                 7187
+
+
+
+  error_invalid_starting_codeseg =      7188
+
+  error_invalid_stackseg =              7189
+
+  error_invalid_moduletype =            7190
+
+  error_invalid_exe_signature =         7191
+
+  error_exe_marked_invalid =            7192
+
+  error_bad_exe_format =                7193
+
+  error_iterated_data_exceeds_64k =     7194
+
+  error_invalid_minallocsize =          7195
+
+  error_dynlink_from_invalid_ring =     7196
+
+  error_iopl_not_enabled =              7197
+
+  error_invalid_segdpl =                7198
+
+  error_autodataseg_exceeds_64k =       7199
+
+  error_ring2seg_must_be_movable =      7200
+
+  error_reloc_chain_xeeds_seglim =      7201
+
+  error_infloop_in_reloc_chain =        7202
+
+  error_envvar_not_found =              7203
+
+  error_not_current_ctry =              7204
+
+  error_no_signal_sent =                7205
+
+  error_filename_exced_range =          7206
+
+  error_ring2_stack_in_use =            7207
+
+  error_meta_expansion_too_long =       7208
+
+  error_invalid_signal_number =         7209
+
+  error_thread_1_inactive =             7210
+
+  error_info_not_avail =                7211
+
+  error_locked =                        7212
+
+  error_bad_dynalink =                  7213
+
+  error_too_many_modules =              7214
+
+  error_nesting_not_allowed =           7215
+
+  error_cannot_shrink =                 7216
+
+  error_zombie_process =                7217
+
+  error_stack_in_high_memory =          7218
+
+  error_invalid_exitroutine_ring =      7219
+
+  error_getbuf_failed =                 7220
+
+  error_flushbuf_failed =               7221
+
+  error_transfer_too_long =             7222
+
+  error_no_children =                   7228
+
+  error_invalid_screen_group =          7229
+
+
+
+  error_bad_pipe =                      7230
+
+  error_pipe_busy =                     7231
+
+  error_no_data =                       7232
+
+  error_pipe_not_connected =            7233
+
+  error_more_data =                     7234
+
+
+
+  error_vc_disconnected =               7240
+
+  error_circularity_requested =         7250
+
+  error_directory_in_cds =              7251
+
+  error_invalid_fsd_name =              7252
+
+  error_invalid_path =                  7253
+
+  error_invalid_ea_name =               7254
+
+  error_ea_list_inconsistent =          7255
+
+  error_ea_list_too_long =              7256
+
+  error_no_meta_match =                 7257
+
+  error_findnotify_timeout =            7258
+
+  error_no_more_items =                 7259
+
+  error_search_struc_reused =           7260
+
+  error_char_not_found =                7261
+
+  error_too_much_stack =                7262
+
+  error_invalid_attr =                  7263
+
+  error_invalid_starting_ring =         7264
+
+  error_invalid_dll_init_ring =         7265
+
+  error_cannot_copy =                   7266
+
+  error_directory =                     7267
+
+  error_oplocked_file =                 7268
+
+  error_oplock_thread_exists =          7269
+
+
+
+  error_volume_changed =                7270
+
+  error_findnotify_handle_in_use =      7271
+
+  error_findnotify_handle_closed =      7272
+
+  error_notify_object_removed =         7273
+
+
+
+  error_already_shutdown =              7274
+
+
+
+  error_eas_didnt_fit =                 7275
+
+
+
+  error_ea_file_corrupt =               7276
+
+  error_ea_table_full =                 7277
+
+  error_invalid_ea_handle =             7278
+
+  error_no_cluster =                    7279
+
+  error_create_ea_file =                7280
+
+  error_cannot_open_ea_file =           7281
+
+
+
+  error_invalid_procid =                7303
+
+  error_invalid_pdelta =                7304
+
+  error_not_descendant =                7305
+
+  error_not_session_manager =           7306
+
+  error_invalid_pclass =                7307
+
+  error_invalid_scope =                 7308
+
+  error_invalid_threadid =              7309
+
+  error_dossub_shrink =                 7310
+
+  error_dossub_nomem =                  7311
+
+  error_dossub_overlap =                7312
+
+  error_dossub_badsize =                7313
+
+  error_dossub_badflag =                7314
+
+  error_dossub_badselector =            7315
+
+  error_mr_msg_too_long =               7316
+
+  error_mr_mid_not_found =              7317
+
+  error_mr_un_acc_msgf =                7318
+
+  error_mr_inv_msgf_format =            7319
+
+  error_mr_inv_ivcount =                7320
+
+  error_mr_un_perform =                 7321
+
+  error_ts_wakeup =                     7322
+
+  error_ts_semhandle =                  7323
+
+  error_ts_notimer =                    7324
+
+  error_ts_handle =                     7326
+
+  error_ts_datetime =                   7327
+
+  error_sys_internal =                  7328
+
+  error_que_current_name =              7329
+
+  error_que_proc_not_owned =            7330
+
+  error_que_proc_owned =                7331
+
+  error_que_duplicate =                 7332
+
+  error_que_element_not_exist =         7333
+
+  error_que_no_memory =                 7334
+
+  error_que_invalid_name =              7335
+
+  error_que_invalid_priority =          7336
+
+  error_que_invalid_handle =            7337
+
+  error_que_link_not_found =            7338
+
+  error_que_memory_error =              7339
+
+  error_que_prev_at_end =               7340
+
+  error_que_proc_no_access =            7341
+
+  error_que_empty =                     7342
+
+  error_que_name_not_exist =            7343
+
+  error_que_not_initialized =           7344
+
+  error_que_unable_to_access =          7345
+
+  error_que_unable_to_add =             7346
+
+  error_que_unable_to_init =            7347
+
+  error_vio_invalid_mask =              7349
+
+  error_vio_ptr =                       7350
+
+  error_vio_aptr =                      7351
+
+  error_vio_rptr =                      7352
+
+  error_vio_cptr =                      7353
+
+  error_vio_lptr =                      7354
+
+  error_vio_mode =                      7355
+
+  error_vio_width =                     7356
+
+  error_vio_attr =                      7357
+
+  error_vio_row =                       7358
+
+  error_vio_col =                       7359
+
+  error_vio_toprow =                    7360
+
+  error_vio_botrow =                    7361
+
+  error_vio_rightcol =                  7362
+
+  error_vio_leftcol =                   7363
+
+  error_scs_call =                      7364
+
+  error_scs_value =                     7365
+
+  error_vio_wait_flag =                 7366
+
+  error_vio_unlock =                    7367
+
+  error_sgs_not_session_mgr =           7368
+
+  error_smg_invalid_sgid =              7369
+
+  error_smg_invalid_session_id =        7369
+
+  error_smg_nosg =                      7370
+
+  error_smg_no_sessions =               7370
+
+  error_smg_grp_not_found =             7371
+
+  error_smg_session_not_found =         7371
+
+  error_smg_set_title =                 7372
+
+  error_kbd_parameter =                 7373
+
+  error_kbd_no_device =                 7374
+
+  error_kbd_invalid_iowait =            7375
+
+  error_kbd_invalid_length =            7376
+
+  error_kbd_invalid_echo_mask =         7377
+
+  error_kbd_invalid_input_mask =        7378
+
+  error_mon_invalid_parms =             7379
+
+  error_mon_invalid_devname =           7380
+
+  error_mon_invalid_handle =            7381
+
+  error_mon_buffer_too_small =          7382
+
+  error_mon_buffer_empty =              7383
+
+  error_mon_data_too_large =            7384
+
+  error_mouse_no_device =               7385
+
+  error_mouse_inv_handle =              7386
+
+  error_mouse_inv_parms =               7387
+
+  error_mouse_cant_reset =              7388
+
+  error_mouse_display_parms =           7389
+
+  error_mouse_inv_module =              7390
+
+  error_mouse_inv_entry_pt =            7391
+
+  error_mouse_inv_mask =                7392
+
+  no_error_mouse_no_data =              7393
+
+  no_error_mouse_ptr_drawn =            7394
+
+  error_invalid_frequency =             7395
+
+  error_nls_no_country_file =           7396
+
+  error_nls_open_failed =               7397
+
+  error_nls_no_ctry_code =              7398
+
+  error_no_country_or_codepage =        7398
+
+  error_nls_table_truncated =           7399
+
+  error_nls_bad_type =                  7400
+
+  error_nls_type_not_found =            7401
+
+  error_vio_smg_only =                  7402
+
+  error_vio_invalid_asciiz =            7403
+
+  error_vio_deregister =                7404
+
+  error_vio_no_popup =                  7405
+
+  error_vio_existing_popup =            7406
+
+  error_kbd_smg_only =                  7407
+
+  error_kbd_invalid_asciiz =            7408
+
+  error_kbd_invalid_mask =              7409
+
+  error_kbd_register =                  7410
+
+  error_kbd_deregister =                7411
+
+  error_mouse_smg_only =                7412
+
+  error_mouse_invalid_asciiz =          7413
+
+  error_mouse_invalid_mask =            7414
+
+  error_mouse_register =                7415
+
+  error_mouse_deregister =              7416
+
+  error_smg_bad_action =                7417
+
+  error_smg_invalid_call =              7418
+
+  error_scs_sg_notfound =               7419
+
+  error_scs_not_shell =                 7420
+
+  error_vio_invalid_parms =             7421
+
+  error_vio_function_owned =            7422
+
+  error_vio_return =                    7423
+
+  error_scs_invalid_function =          7424
+
+  error_scs_not_session_mgr =           7425
+
+  error_vio_register =                  7426
+
+  error_vio_no_mode_thread =            7427
+
+  error_vio_no_save_restore_thd =       7428
+
+  error_vio_in_bg =                     7429
+
+  error_vio_illegal_during_popup =      7430
+
+  error_smg_not_baseshell =             7431
+
+  error_smg_bad_statusreq =             7432
+
+  error_que_invalid_wait =              7433
+
+  error_vio_lock =                      7434
+
+  error_mouse_invalid_iowait =          7435
+
+  error_vio_invalid_handle =            7436
+
+  error_vio_illegal_during_lock =       7437
+
+  error_vio_invalid_length =            7438
+
+  error_kbd_invalid_handle =            7439
+
+  error_kbd_no_more_handle =            7440
+
+  error_kbd_cannot_create_kcb =         7441
+
+  error_kbd_codepage_load_incompl =     7442
+
+  error_kbd_invalid_codepage_id =       7443
+
+  error_kbd_no_codepage_support =       7444
+
+  error_kbd_focus_required =            7445
+
+  error_kbd_focus_already_active =      7446
+
+  error_kbd_keyboard_busy =             7447
+
+  error_kbd_invalid_codepage =          7448
+
+  error_kbd_unable_to_focus =           7449
+
+  error_smg_session_non_select =        7450
+
+  error_smg_session_not_foregrnd =      7451
+
+  error_smg_session_not_parent =        7452
+
+  error_smg_invalid_start_mode =        7453
+
+  error_smg_invalid_related_opt =       7454
+
+  error_smg_invalid_bond_option =       7455
+
+  error_smg_invalid_select_opt =        7456
+
+  error_smg_start_in_background =       7457
+
+  error_smg_invalid_stop_option =       7458
+
+  error_smg_bad_reserve =               7459
+
+  error_smg_process_not_parent =        7460
+
+  error_smg_invalid_data_length =       7461
+
+  error_smg_not_bound =                 7462
+
+  error_smg_retry_sub_alloc =           7463
+
+  error_kbd_detached =                  7464
+
+  error_vio_detached =                  7465
+
+  error_mou_detached =                  7466
+
+  error_vio_font =                      7467
+
+  error_vio_user_font =                 7468
+
+  error_vio_bad_cp =                    7469
+
+  error_vio_no_cp =                     7470
+
+  error_vio_na_cp =                     7471
+
+  error_invalid_code_page =             7472
+
+  error_cplist_too_small =              7473
+
+  error_cp_not_moved =                  7474
+
+  error_mode_switch_init =              7475
+
+  error_code_page_not_found =           7476
+
+  error_unexpected_slot_returned =      7477
+
+  error_smg_invalid_trace_option =      7478
+
+  error_vio_internal_resource =         7479
+
+  error_vio_shell_init =                7480
+
+  error_smg_no_hard_errors =            7481
+
+  error_cp_switch_incomplete =          7482
+
+  error_vio_transparent_popup =         7483
+
+  error_critsec_overflow =              7484
+
+  error_critsec_underflow =             7485
+
+  error_vio_bad_reserve =               7486
+
+  error_invalid_address =               7487
+
+  error_zero_selectors_requested =      7488
+
+  error_not_enough_selectors_ava =      7489
+
+  error_invalid_selector =              7490
+
+  error_smg_invalid_program_type =      7491
+
+  error_smg_invalid_pgm_control =       7492
+
+  error_smg_invalid_inherit_opt =       7493
+
+  error_vio_extended_sg =               7494
+
+  error_vio_not_pres_mgr_sg =           7495
+
+  error_vio_shield_owned =              7496
+
+  error_vio_no_more_handles =           7497
+
+  error_vio_see_error_log =             7498
+
+  error_vio_associated_dc =             7499
+
+  error_kbd_no_console =                7500
+
+  error_mouse_no_console =              7501
+
+  error_mouse_invalid_handle =          7502
+
+  error_smg_invalid_debug_parms =       7503
+
+  error_kbd_extended_sg =               7504
+
+  error_mou_extended_sg =               7505
+
+  error_smg_invalid_icon_file =         7506
+
+
+
+%/***************************************************************************
+
+%        ODBCBind package errors
+
+%***************************************************************************/
+
+  error_SQL_INVALID_HANDLE		= 8800
+
+  error_SQL_STILL_EXECUTING		= 8801
+
+  error_SQL_NEED_DATA			= 8802
+
+  error_SQL_NO_DATA_FOUND			= 8803
+
+  error_SQL_ERROR				= 8804
+
+  error_ODBC_ERROR			= 8805
+
+  error_ODBC_default			= 8806
+
+
+
+%/***************************************************************************
+
+%        SockBind packages errors
+
+%***************************************************************************/
+
+  err_SckDoubleInit			= 8901
+
+  err_SckNotInit			= 8902
+
+  err_SckInvalidParms			= 8903
+
+  err_SckGeneral	       		= 8904
+
+  msglay_errStartUp			= 8930
+
+  msglay_errHost			= 8931
+
+  msglay_errCreate			= 8932
+
+  msglay_errConnect			= 8933
+
+  msglay_errListen			= 8934
+
+  msglay_errClose			= 8935
+
+  msglay_errWrite			= 8936
+
+  msglay_errInternal			= 8937
+
+  msglay_errSetOption			= 8938
+
+  msglay_errGetInf			= 8939
+
+  httplay_errInvalidHeader		= 8950
+
+  httplay_errInvalidDate_or_Time	= 8951
+
+  httplay_errInvalidResponse		= 8952
+
+
+
+%/***************************************************************************
+
+%        VPI packages errors
+
+%***************************************************************************/
+
+
+
+  error_vpi_package_bad_window            = 9000
+
+  error_vpi_package_bad_identifier        = 9001
+
+  error_vpi_package_identifier_registered = 9002
+
+  error_vpi_package_bad_window_type       = 9003
+
+  error_vpi_package_bad_data              = 9004
+
+  error_vpi_package_internal_error        = 9005

@@ -1,0 +1,24 @@
+/*****************************************************************************
+
+		Copyright (c) My Company
+
+ Project:  11
+ FileName: 11.PRO
+ Purpose: No description
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+include "11.inc"
+
+predicates
+
+  11()
+
+clauses
+
+  11():-!.
+
+goal
+
+  11().

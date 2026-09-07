@@ -1,0 +1,24 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ Project:
+ FileName: IODECL.PRE
+ Purpose: Input/Output operations
+ Written by: Victor Yukhtenko
+ Comments:
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+                บ      บ
+
+******************************************************************************/
+
+%Redirect console output from the Prolog library
+global predicates
+
+  IO_WrStrCon(STRING) - (I) language c
+  IO_WrChCon(CHAR) - (I) language c 

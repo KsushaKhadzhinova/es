@@ -1,0 +1,38 @@
+/*****************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ Project:
+ FileName: BINARY.PRE
+ Purpose: Interface to some binary functions in PROLOG.LIB
+ Written by: Compiler Group
+ Comments:
+
+ อออออออออออออออหออออออหอออออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮอออออออออออออออออออออออออออออออออออออออออออออออออออออออ
+		บ      บ
+******************************************************************************/
+ifndef types_dom_included
+ #Error: file types.dom must be included
+enddef
+
+constants
+  binary_pre_included = 1
+
+global predicates
+
+  procedure splitBinary( BINARY   Source,
+	    		 UNSIGNED LengthOfHead,
+		         BINARY   Head,
+		         BINARY   Tail) - (i,i,o,o)
+
+  procedure BINARY mergeBinary( BINARY Head, BINARY Tail ) - (i,i)
+
+
+
+  SLIST binary_to_strlist( BINARY Binary )
+				- (i) language c as "_CONV_Bin_To_StrList"
+

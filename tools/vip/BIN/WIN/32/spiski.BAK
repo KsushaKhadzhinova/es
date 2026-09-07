@@ -1,0 +1,25 @@
+include "spiski.inc"
+
+domains
+	li=integer*
+
+predicates
+ nondeterm start()
+  nondeterm sum(li, integer)
+
+clauses
+
+  start():-
+  writef("Enter list:\n"),
+  readterm(li,L),
+  nl,
+  sum(L,0).
+  sum([],R):-
+  writef("Summ of elements is %\n",R).
+  sum([HEAD|TAIL],R):-
+  R1=R+HEAD,
+  sum(TAIL,R1).
+
+goal
+
+  start().

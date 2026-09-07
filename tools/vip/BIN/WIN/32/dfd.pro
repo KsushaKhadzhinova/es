@@ -1,0 +1,24 @@
+/*****************************************************************************
+
+		Copyright (c) My Company
+
+ Project:  DFD
+ FileName: DFD.PRO
+ Purpose: No description
+ Written by: Visual Prolog
+ Comments:
+******************************************************************************/
+
+include "dfd.inc"
+
+predicates
+
+ nondeterm min(integer,integer,integer)
+
+clauses
+min(A,B,A):- A<=B,!.
+min(_,B,B).
+goal
+write("A= "),readint(A),
+write("B= "),readint(B),
+min(A,B,Min),write("Minimum=",Min),nl .

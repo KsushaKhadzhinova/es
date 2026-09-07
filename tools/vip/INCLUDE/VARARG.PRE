@@ -1,0 +1,27 @@
+/******************************************************************************
+
+		Copyright (c) 1984 - 2000 Prolog Development Center A/S
+
+				Visual Prolog
+
+ FileName: VARARG.PRE
+ PURPOSE: Predicate declaration for variable argument calls
+ Written by: Compiler Group
+
+ อออออออออออออออหออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  Date Modified,บ By,  บ  Comments.
+ อออออออออออออออฮออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออ
+    10/02/99	บSPB458บ R990210.02 Support for the stdcall calling convention
+                บ      บ
+******************************************************************************/
+
+global predicates
+  /* SPB458 begin */
+  /*
+  var_arg_call( C_Proc,      ArgValueList ) - (i,i) language c as "_RNT_VarArg"
+  var_arg_call( Pascal_Proc, ArgValueList ) - (i,i) language c as "_RNT_VarArgP"
+  */
+  DWORD var_arg_call( C_Proc,      ArgValueList ) - (i,i) language c as "_RNT_VarArg"
+  DWORD var_arg_call( Std_Proc,	   ArgValueList ) - (i,i) language c as "_RNT_VarArg"
+  DWORD var_arg_call( Pascal_Proc, ArgValueList ) - (i,i) language c as "_RNT_VarArgP"
+  /* SPB458 end */
